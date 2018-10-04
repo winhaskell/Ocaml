@@ -1,3 +1,4 @@
+A
 # let rec fib n =
   if n <= 1 then 1
       else fib (n - 1) + fib (n - 2);;
@@ -6,4 +7,22 @@ val fib : int -> int = <fun>
   ;;
 - : int = 13
 #
+
+
+B
+#    let rec sumk n = if n=0 then 0 else sumk(n-1) + n*n;;
+val sumk : int -> int = <fun>
+
+# sumk 5;;
+- : int = 55
+# sumk 9;;
+- : int = 285
+# sumk 8;;
+- : int = 204
+# sumk 7;;
+- : int = 140
+# sumk 6;;
+- : int = 91
+#
+
 
