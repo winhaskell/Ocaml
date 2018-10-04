@@ -1,0 +1,60 @@
+https://gist.github.com/hk03ne/6ad87cee4bea8442ef61969db0acfb92
+
+(* 
+ * 日付の妥当性チェックとか曜日計算とか 
+ *)
+
+(* うるう年か調べる *)
+let isUru y=
+  if (y mod 4) = 0 then
+    not(y mod 100 = 0 && not(y mod 400 = 0))
+  else false;;
+
+(* 年と月からその月の末日をもとめる *)
+let lastDay y m =
+  let arrayOfLastDay = [|31; 28; 31; 30; 31; 30; 31; 31; 30; 31; 30; 31|] in
+  if (isUru y) then arrayOfLastDay.(1) <- 29;
+  arrayOfLastDay.(m - 1);;
+
+(* 日付が存在するか? *)
+let checkDate y m d =
+  if not(0 <= y && y <= 9999) then false
+  else if not(1 <= m && m <= 12) then false
+  else if not(1 <= d && d <= lastDay y m) then false
+  else true;;
+
+(* test *)
+let test_of_checkDate1 = checkDate 2016 2 29 = true
+let test_of_checkDate2 = checkDate 2016 4 31 = false
+
+(* 年月日を1990年1月1日からの経過日数に変換する *)
+let dateToSerial y m d =
+  (* 1990年からy年までの経過年数分の日数 *)
+  let rec sumY y =
+    let d = if isUru (y - 1) then 366 else 365 in 
+    if y - 1990 = 0 then 0
+    else d + sumY (y - 1) in
+  (* y年1月からy年m月までの経過月数分の日数 *)
+  let rec sumM m =
+    if m - 1 = 0 then 0
+    else lastDay y (m - 1) + sumM (m - 1) in
+  (* y年m月1日からの経過日数 *)
+  let sumD d =
+    d - 1 in
+  
+  (sumY y) + (sumM m) + (sumD d);;
+
+(* 日付から曜日をもとめる *)
+(* 戻り値 0: 日曜日, 1: 月曜日, … , 6: 土曜日 *)
+let whatDay y m d =
+  let n = dateToSerial y m d in
+  (* 1990年1月1日は月曜日 *)
+  (n mod 7) + 1;;
+
+(* test *)
+
+let test_of_whatDay2= whatDay 2016 7 18 = 1
+
+# let test_of_whatDay1 = whatDay 2018 10 10;;
+val test_of_whatDay1 : int = 3
+#
