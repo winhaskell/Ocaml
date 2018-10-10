@@ -1,0 +1,41 @@
+# let isUru y=
+  if (y mod 4) = 0 then
+        not(y mod 100 = 0 && not(y mod 400 = 0))
+  else false;;
+;;
+
+val isUru : int -> bool = <fun>
+
+# isUru 2021
+  ;;
+- : bool = false
+# isUru 2004;;
+Characters 0-1:
+  isUru 2004;;
+  ^
+Error: Illegal character (\027)
+# isUru 2020
+  ;;
+- : bool = true
+# isUru 2004
+  ;;
+Characters 0-1:
+  isUru 2004
+  ^
+Error: Illegal character (\027)
+# isUru 2004
+  ;;
+- : bool = true
+# isUru 2017
+  ;;
+- : bool = false
+# isUru 2018
+  ;;
+- : bool = false
+# isUru 1900
+  ;;
+- : bool = false
+# isUru 1888
+  ;;
+- : bool = true
+#
