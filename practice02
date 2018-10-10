@@ -39,3 +39,34 @@ Error: Illegal character (\027)
   ;;
 - : bool = true
 #
+
+
+
+--------------------------------------------------------------------
+
+
+# let isUru y=
+  if (y mod 4) = 0 then
+        not(y mod 100 = 0 && not(y mod 400 = 0))
+  else false;;
+  ;;
+val isUru : int -> bool = <fun>
+# let lastDay y m =
+  let arrayOfLastDay = [|31; 28; 31; 30; 31; 30; 31; 31; 30; 31; 30; 31|] in
+      if (isUru y) then arrayOfLastDay.(1) <- 29;
+    arrayOfLastDay.(m - 1);;
+val lastDay : int -> int -> int = <fun>
+# last 2018 10
+  ;;
+Characters 0-4:
+  last 2018 10
+  ^^^^
+Error: Unbound value last
+
+# lastDay 2018 10;;
+- : int = 31
+
+# lastDay 2017 9;;
+- : int = 30
+#
+
