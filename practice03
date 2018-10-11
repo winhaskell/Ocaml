@@ -121,3 +121,37 @@ val fact : int -> int = <fun>
 val fact : int -> int = <fun>
 # fact 20;;
 - : int = 2432902008176640000
+
+
+# last [ "a" ; "b" ; "c" ; "d" ];;
+Characters 0-4:
+  last [ "a" ; "b" ; "c" ; "d" ];;
+  ^^^^
+Error: Unbound value last
+# let rec last = function
+    | [] -> None
+        | [x] -> Some x
+    | _ :: t -> last t;;
+  ;;
+val last : 'a list -> 'a option = <fun>
+
+# last [ "a" ; "b" ; "c" ; "d" ];;
+- : string option = Some "d"
+
+# let rec at k = function
+    | [] -> None
+        | h :: t -> if k = 1 then Some h else at (k-1) t;;
+val at : int -> 'a list -> 'a option = <fun>
+# at 3 [ "a" ; "b"; "c"; "d"; "e" ];;
+- : string option = Some "c"
+# at 1 [ "a" ];;
+Characters 0-1:
+  at 1 [ "a" ];;
+  ^
+Error: Illegal character (\022)
+# at 1 [ "a" ];;
+- : string option = Some "a"
+# at 3 [ "a" ];;
+- : string option = None
+#
+
