@@ -78,3 +78,46 @@ val max : 'a -> 'a -> 'a = <fun>
 # max "a" "b";;
 - : string = "b"
 
+
+# let my_list = [1; 2; 3; 4; 5; 6; 7; 8; 9; 10];;
+val my_list : int list = [1; 2; 3; 4; 5; 6; 7; 8; 9; 10]
+# List.map (( * ) 2) my_list;;
+- : int list = [2; 4; 6; 8; 10; 12; 14; 16; 18; 20]
+# let is_even i =
+    i mod 2 = 0 in
+      List.filter is_even my_list;;
+- : int list = [2; 4; 6; 8; 10]
+
+# 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10;;
+- : int = 55
+
+#  let sum = List.fold_left ( + ) 0;;
+val sum : int list -> int = <fun>
+# let product = List.fold_left ( * ) 1;;
+val product : int list -> int = <fun>
+
+# sum my_list;;
+- : int = 55
+# product my_list;;
+- : int = 3628800
+
+# let fact n = product (range 1 n);;
+Characters 22-27:
+  let fact n = product (range 1 n);;
+                        ^^^^^
+Error: Unbound value range
+Hint: Did you mean raise?
+# let rec range a b =
+    if a > b then []
+        else a :: range (a+1) b;;
+val range : int -> int -> int list = <fun>
+# let fact n = product (range 1 n);;
+val fact : int -> int = <fun>
+# fact 10;;
+- : int = 3628800
+
+
+# let fact n = product (range 1 n);;
+val fact : int -> int = <fun>
+# fact 20;;
+- : int = 2432902008176640000
