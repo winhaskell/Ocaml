@@ -1,0 +1,21 @@
+# sqrt(2.0);;
+- : float = 1.4142135623730951
+# (sqrt(3.0 +. 1.0) +. 4.0) /. 3.0;;
+- : float = 2.
+# log(1.0);;
+- : float = 0.
+# exp(1.0)
+  ;;
+Characters 9-10:
+  ;;
+  ^
+Error: Illegal character (\027)
+# exp(1.0);;
+- : float = 2.7182818284590451
+# let rec sum(n) =
+if n = 1 then 1 else sum(n - 1) + n;;
+  ;;
+val sum : int -> int = <fun>
+# sum(100);;
+- : int = 5050
+#
