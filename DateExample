@@ -58,3 +58,7 @@ let test_of_whatDay2= whatDay 2016 7 18 = 1
 # let test_of_whatDay1 = whatDay 2018 10 10;;
 val test_of_whatDay1 : int = 3
 #
+
+
+
+https://hwb.ecc.u-tokyo.ac.jp/current/programming/ocaml/
