@@ -49,3 +49,32 @@ val m : int list = [0; 1; 2; 3]
 val sum : int list -> int = <fun>
 # sum [1;2;3];;
 - : int = 6
+
+
+# let max a b =
+    if a > b then a else b;;
+  ;;
+Characters 0-1:
+  let max a b =
+  ^
+Error: Illegal character (\022)
+# let max a b =
+    if a > b then a else b;;
+  ;;
+val max : 'a -> 'a -> 'a = <fun>
+# max 88 9
+  ;;
+- : int = 88
+# max 8 99;;
+- : int = 99
+# max 100 99;;
+- : int = 100
+#
+
+# let max a b =
+    if a > b then a else b;;
+  ;;
+val max : 'a -> 'a -> 'a = <fun>
+# max "a" "b";;
+- : string = "b"
+
