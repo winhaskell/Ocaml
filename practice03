@@ -180,3 +180,16 @@ val length : 'a list -> int = <fun>
 - : int = 0
 #
 
+
+#  let rev list =
+    let rec aux acc = function
+          | [] -> acc
+        | h::t -> aux (h::acc) t in
+    aux [] list;;
+  ;;
+val rev : 'a list -> 'a list = <fun>
+
+# rev ["a" ; "b" ; "c"];;
+- : string list = ["c"; "b"; "a"]
+#
+
