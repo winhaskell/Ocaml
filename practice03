@@ -26,3 +26,26 @@ val sum : int -> int = <fun>
 # 1 :: 2 :: 3 :: [] ;;
 - : int list = [1; 2; 3]
 #
+# 1 :: 2 :: 3 ::6 ::66:: [];;
+- : int list = [1; 2; 3; 6; 66]
+#
+
+
+#
+  "three" :: empty;;
+- : string list = ["three"]
+#  let l = 1 :: 2 :: 3 ::4::5[];;
+val l : int list = [1; 2; 3]
+# let m = 0 :: l;;
+val m : int list = [0; 1; 2; 3]
+# l;;
+- : int list = [1; 2; 3]
+# let rec sum l =
+    match l with
+        | [] -> 0
+      | hd :: tl -> hd + sum tl
+  ;;
+  ;;
+val sum : int list -> int = <fun>
+# sum [1;2;3];;
+- : int = 6
