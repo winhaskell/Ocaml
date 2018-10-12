@@ -1,3 +1,5 @@
+http://www.codecodex.com/wiki/Calculate_a_triangle_number#OCaml
+
 #  let triangle_numbers n = Array.init n (fun i -> i*(i+1)/2);;
 val triangle_numbers : int -> int array = <fun>
 
