@@ -1,0 +1,8 @@
+# let rec fact = function
+  0 -> 1
+    | n -> n * fact (n - 1);;
+val fact : int -> int = <fun>
+# fact 6
+  ;;
+- : int = 720
+#
