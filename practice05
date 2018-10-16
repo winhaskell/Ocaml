@@ -6,3 +6,26 @@ val fact : int -> int = <fun>
   ;;
 - : int = 720
 #
+
+
+# let rec gcd a = function
+  0 -> a
+    | b -> gcd b (a mod b);;
+val gcd : int -> int -> int = <fun>
+# gcd 5 15;;
+- : int = 5
+# gcd 99 9;;
+- : int = 9
+# gcd 100 200;;
+- : int = 100
+#
+
+# let rec mapcar f = function
+  [] -> []
+    | x :: xs -> f x :: mapcar f xs;;
+val mapcar : ('a -> 'b) -> 'a list -> 'b list = <fun>
+# mapcar (fun x -> x * x) [1; 2; 3; 4; 5];;
+- : int list = [1; 4; 9; 16; 25]
+# mapcar (fun x -> x * x) [101; 60; 39; 66; 99];;
+- : int list = [10201; 3600; 1521; 4356; 9801]
+#
