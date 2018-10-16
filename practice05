@@ -1,3 +1,8 @@
+M.Hiroi's Home Page
+http://www.geocities.jp/m_hiroi/
+http://www.geocities.jp/m_hiroi/func/ocaml04.html
+http://www.geocities.jp/m_hiroi/func/ocaml05.html
+
 # let rec fact = function
   0 -> 1
     | n -> n * fact (n - 1);;
@@ -42,4 +47,17 @@ val remove_if : ('a -> bool) -> 'a list -> 'a list = <fun>
 #
 
 
+# let rec insert_sort xs =
+  let rec insert_element x = function
+        [] -> [x]
+    | (y::ys) as a -> if x < y then x::a else y::insert_element x ys
+  in
+        match xs with
+        [] -> []
+      | y::ys -> insert_element y (insert_sort ys);;
+val insert_sort : 'a list -> 'a list = <fun>
+
+# insert_sort [9; 1; 8; 2; 7; 3; 6; 4; 5];;
+- : int list = [1; 2; 3; 4; 5; 6; 7; 8; 9]
+#
 
