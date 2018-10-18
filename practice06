@@ -1,0 +1,72 @@
+# let rec merge xs ys =
+  match (xs, ys) with
+        ([], _) -> ys
+    | (_, []) -> xs
+    | (x1:: xs1, y1::ys1) ->
+    if x1 < y1 then x1::merge xs1 ys else y1::merge xs ys1;;
+Characters 162-163:
+      if x1 < y1 then x1::merge xs1 ys else y1::merge xs y;;
+                                                         ^
+Error: Unbound value y
+# let rec merge xs ys =
+  match (xs, ys) with
+        ([], _) -> ys
+  | (_, []) -> xs
+      | (x1:: xs1, y1::ys1) ->
+    if x1 < y1 then x1::merge xs1 ys else y1::merge xs ys;;
+Characters 153-161:
+      if x1 < y1 then x1::merge xs1 ys else y1::merge xs ;;
+                                                ^^^^^^^^
+Error: This expression has type 'a list -> 'a list
+       but an expression was expected of type 'a list
+# let rec merge xs ys =
+  match (xs, ys) with
+        ([], _) -> ys
+  | (_, []) -> xs
+      | (x1:: xs1, y1::ys1) ->
+    if x1 < y1 then x1::merge xs1 ys else y1::merge xs ys1  ;;
+val merge : 'a list -> 'a list -> 'a list = <fun>
+
+#  merge [1; 3; 5; 7] [2; 4; 6; 8];;
+- : int list = [1; 2; 3; 4; 5; 6; 7; 8]
+
+# merge [1; 3; 5; 100] [2; 101; 666; 8];;
+- : int list = [1; 2; 3; 5; 100; 101; 666; 8]
+
+
+#  type fruit = Apple | Orange | Grape;;
+type fruit = Apple | Orange | Grape
+
+# Apple;;
+- : fruit = Apple
+
+# Grape;;
+Characters 0-1:
+  Grape;;
+  ^
+Error: Illegal character (\022)
+
+# Grape;;
+- : fruit = Grape
+
+# Orange;;
+- : fruit = Orange
+
+# Banana;;
+Characters 0-6:
+  Banana;;
+  ^^^^^^
+Error: Unbound constructor Banana
+
+
+# let a = [Apple; Orange; Grape];;
+val a : fruit list = [Apple; Orange; Grape]
+
+# let b = (Apple, Orange);;
+Characters 0-1:
+  let b = (Apple, Orange);;
+  ^
+Error: Illegal character (\022)
+# let b = (Apple, Orange);;
+val b : fruit * fruit = (Apple, Orange)
+#
