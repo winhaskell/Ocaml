@@ -1,0 +1,189 @@
+# 4 / 0;;
+Exception: Division_by_zero.
+#  List.tl (List.tl [1]));;
+Characters 22-23:
+   List.tl (List.tl [1]));;
+                        ^
+Error: Syntax error
+# et foo n = if n < 0 then raise Foo else 1;;
+Characters 0-2:
+  et foo n = if n < 0 then raise Foo else 1;;
+  ^^
+Error: Unbound value et
+# let foo n = if n < 0 then raise Foo else 1;;
+Characters 32-35:
+  let foo n = if n < 0 then raise Foo else 1;;
+                                  ^^^
+Error: This variant expression is expected to have type exn
+       The constructor Foo does not belong to type exn
+# exception Foo;;
+exception Foo
+# Foo;;
+- : exn = Foo
+# exception Bar of int * int;;
+exception Bar of int * int
+# Bar (1, 2);;
+- : exn = Bar (1, 2)
+#  let foo n = if n < 0 then raise Foo else 1;;
+val foo : int -> int = <fun>
+#  foo 1;;
+- : int = 1
+# int = 1
+  foo (-1);;
+Characters 0-3:
+  int = 1
+  ^^^
+Error: Unbound value int
+# let bar a b = if a < 0 || b < 0 then raise (Bar (a, b)) else 1;;
+val bar : int -> int -> int = <fun>
+#  bar 1 1;;
+- : int = 1
+# bar (-1) 1;;
+Exception: Bar (-1, 1).
+# let fact n =
+  let facti n a =
+      if n = 0 then a
+        else facti (n - 1) (n * a)
+    in
+      if n < 0 then raise Negative
+      else facti n 1;;
+Characters 60-65:
+      else facti (n - 1) (n * a)
+           ^^^^^
+Error: Unbound value facti
+# let fact n =
+  let facti n a =
+        if n = 0 then a
+      else facti (n - 1) (n * a)
+    in
+      if n < 0 then raise Negative
+      else facti n 1
+  ;;
+Characters 60-65:
+      else facti (n - 1) (n * a)
+           ^^^^^
+Error: Unbound value facti
+# exception Negative
+
+    let fact n =
+    let facti n a =
+      if n = 0 then a
+      else facti (n - 1) (n * a)
+  in
+        if n < 0 then raise Negative
+      else facti n 1;;
+Characters 80-85:
+      else facti (n - 1) (n * a)
+           ^^^^^
+Error: Unbound value facti
+# let pascal x =
+  for n = 0 to x - 1 do
+        for r = 0 to n do
+        print_int (comb (n, r));
+        print_string " "
+      done;
+      print_newline ()
+    done;;
+Characters 78-82:
+        print_int (comb (n, r));
+                   ^^^^
+Error: Unbound value comb
+# (*
+ *  komachi.ml : 小町算の解法
+* *  *
+*  *               Copyright (C) 2008 Makoto Hiroi
+*  *)
+
+  (* データ型の定義 *)
+  type term = Plus | Minus | Num of int
+
+    (* 式の計算 *)
+  let calc_expr expr =
+  let rec calc_expr_sub expr a =
+        match expr with
+        [] -> a
+      | Plus :: Num x :: xs -> calc_expr_sub xs (a + x)
+    | Minus :: Num x :: xs -> calc_expr_sub xs (a - x)
+      | _ -> raise (Failure "calc_expr_sub")
+      in
+    match expr with
+        Num x :: xs -> calc_expr_sub xs x
+      | _ -> raise (Failure "calc_expr")
+
+  (* 式の表示 *)
+  let rec print_expr = function
+    [] -> print_string " = 100\n"
+  | Num x :: xs -> print_int x; print_expr xs
+  | Plus :: xs -> print_string " + "; print_expr xs
+  | Minus :: xs -> print_string " - "; print_expr xs
+
+  (* 式の組み立て *)
+  let rec make_expr n expr =
+  if n = 10 then
+        let expr1 = List.rev expr in
+      if calc_expr expr1 = 100 then print_expr expr1 else ()
+  else
+        match expr with
+        Num x :: xs ->
+          make_expr (n + 1) (Num n :: Plus :: expr);
+        make_expr (n + 1) (Num n :: Minus :: expr);
+            make_expr (n + 1) (Num (x * 10 + n) :: xs)
+    | _ -> raise (Failure "make_expr")  ;;
+type term = Plus | Minus | Num of int
+val calc_expr : term list -> int = <fun>
+val print_expr : term list -> unit = <fun>
+val make_expr : int -> term list -> unit = <fun>
+# (*
+ *  queen.ml : ８クイーンの解法
+* *  *
+*  *               Copyright (C) 2008 Makoto Hiroi
+ *)
+*
+  (* 盤面の表示 *)
+  let rec print_board = function
+    [] -> print_newline ()
+| x :: xs -> print_int x; print_string " "; print_board xs
+
+  (* 要素の削除 *)
+  let rec remove n xs = List.filter (fun x -> x <> n) xs
+
+    (* 衝突の検出 *)
+  let attack x xs =
+    let rec attack_sub x n = function
+        [] -> true
+      | y :: ys -> if x = y + n || x = y - n then false
+                 else attack_sub x (n + 1) ys
+      in
+      attack_sub x 1 xs
+
+  (* 安全確認 *)
+  let rec safe = function
+  [] -> true
+    | x :: xs -> if attack x xs then safe xs else false
+
+  (* 単純な生成検定法 *)
+let rec queen nums board =
+      if nums = [] then
+    if safe board then print_board board else ()
+      else
+      List.iter (fun x -> queen (remove x nums) (x :: board)) nums
+
+    (* 高速バージョン *)
+  let rec queen_fast nums board =
+    if nums = [] then print_board board
+  else List.iter (fun x ->
+      if attack x board then queen_fast (remove x nums) (x :: board) else ()) nums;;
+Characters 1048-1050:
+Error: Unbound value nu
+# type 'a tree = Nil | Node of 'a * 'a tree * 'a tree;;
+type 'a tree = Nil | Node of 'a * 'a tree * 'a tree
+# let rec search x = function
+  Nil -> false
+    | Node (y, _, _) when x = y -> true
+| Node (y, left, _) when x < y -> search x left
+  | Node (_, _, right) -> search x right;;
+Characters 160-163:
+  | Node (_, _, right) -> search x rig;;
+                                   ^^^
+Error: Unbound value rig
+#
