@@ -33,3 +33,93 @@ Error: Illegal character (\022)
 #  baz 4;;
 - : int = 108
 #
+
+
+異なる n 個の順列の総数は、n の階乗 (n!) だけあります。たとえば、3 つの整数 1, 2, 3 の順列は次に示すように 6 通りあります。
+
+1 2 3,  1 3 2,  2 1 3,  2 3 1,  3 1 2,  3 2 1
+
+順列の生成 (1)
+
+(* int list の表示 *)
+let print_intlist xs =
+  List.iter (fun x -> print_int x; print_string " ") xs;
+  print_newline ()
+
+(* リストから要素を削除する *)
+let rec remove x = function
+  [] -> []
+| y :: ys -> if x = y then remove x ys else y :: remove x ys
+
+(* 順列の生成 *)
+let gen_perm n xs f = 
+  let rec perm n xs a =
+    if n = 0 then f (List.rev a)
+    else List.iter (fun x -> perm (n - 1) (remove x xs) (x :: a)) xs
+  in
+    perm n xs []
+    
+高階関数 iter の定義
+
+let rec iter f = function
+  [] -> ()
+| x :: xs -> f x; iter f xs
+
+
+let remove x xs = List.filter (fun y -> x <> y) xs
+
+# gen_perm 3 [1; 2; 3] print_intlist;;
+1 2 3
+1 3 2
+2 1 3
+2 3 1
+3 1 2
+3 2 1
+- : unit = ()
+
+****************************************************************************************
+
+# (* int list の表示 *)
+let print_intlist xs =
+      List.iter (fun x -> print_int x; print_string " ") xs;
+  print_newline ()
+
+  (* リストから要素を削除する *)
+  let rec remove x = function
+  [] -> []
+    | y :: ys -> if x = y then remove x ys else y :: remove x ys
+
+    (* 順列の生成 *)
+  let gen_perm n xs f =
+  let rec perm n xs a =
+        if n = 0 then f (List.rev a)
+    else List.iter (fun x -> perm (n - 1) (remove x xs) (x :: a)) xs
+    in
+    perm n xs []    ;;
+    
+val print_intlist : int list -> unit = <fun>
+val remove : 'a -> 'a list -> 'a list = <fun>
+val gen_perm : int -> 'a list -> ('a list -> unit) -> unit = <fun>
+
+# let rec iter f = function
+  [] -> ()
+  | x :: xs -> f x; iter f xs  ;;
+  
+val iter : ('a -> 'b) -> 'a list -> unit = <fun>
+
+# let remove x xs = List.filter (fun y -> x <> y) xs;;
+
+val remove : 'a -> 'a list -> 'a list = <fun>
+
+# gen_perm 3 [1; 2; 3] print_intlist;;
+
+1 2 3
+1 3 2
+2 1 3
+2 3 1
+3 1 2
+3 2 1
+- : unit = ()
+#
+
+
