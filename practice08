@@ -1,0 +1,35 @@
+# let x = "global\n";;
+val x : string = "global\n"
+# let foo () = print_string x;;
+val foo : unit -> unit = <fun>
+# foo ();;
+global
+- : unit = ()
+# let foo n = fun x -> n * x;;
+val foo : int -> int -> int = <fun>
+# let foo10 = foo 10;;
+val foo10 : int -> int = <fun>
+# foo10 100;;
+- : int = 1000
+# let foo5 = foo 5;;
+val foo5 : int -> int = <fun>
+# foo5 11;;
+- : int = 55
+# let compose f g x = g (f x);;
+val compose : ('a -> 'b) -> ('b -> 'c) -> 'a -> 'c = <fun>
+# let foo x = 2 * x + 1;;
+val foo : int -> int = <fun>
+# let bar y = y * y + 3 * y;;
+val bar : int -> int = <fun>
+# bar (foo 4);;
+- : int = 108
+# let baz = compose foo bar;;
+val baz : int -> int = <fun>
+   baz 4;;
+Characters 0-1:
+   baz 4;;
+  ^
+Error: Illegal character (\022)
+#  baz 4;;
+- : int = 108
+#
