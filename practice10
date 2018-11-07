@@ -32,3 +32,14 @@ val compress : 'a list -> 'a list = <fun>
 # compress ["a";"o";"o";"a";"o";"o";"o";"a";"a";"a";"e";"e";"o";"e";"a";"a";"a";"e";"e";"i";"i";"i"];;
 - : string list = ["a"; "o"; "a"; "o"; "a"; "e"; "o"; "e"; "a"; "e"; "i"]
 #
+
+
+# let rec duplicate = function
+        | [] -> []
+        | h :: t -> h :: h :: duplicate t;; 
+        
+val duplicate : 'a list -> 'a list = <fun>
+ 
+#  duplicate ["a";"b";"c";"c";"d"];;
+- : string list = ["a"; "a"; "b"; "b"; "c"; "c"; "c"; "c"; "d"; "d"]
+#
