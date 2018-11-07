@@ -1,0 +1,34 @@
+# let rec last = function
+        | []     -> None
+        | [x]    -> Some x
+        | _ :: t -> last t;;
+      
+val last : 'a list -> 'a option = <fun>
+
+#  last [ "a" ; "b" ; "c" ; "d" ];;
+- : string option = Some "d"
+
+# last [ "a" ; "b" ; "c" ; "d"; "e"];;
+- : string option = Some "e"
+
+# last [];;
+- : 'a option = None
+
+
+# let rec compress = function
+    | a :: (b :: _ as t) -> if a = b then compress t else a :: compress t
+        | smaller -> smaller;;
+        
+val compress : 'a list -> 'a list = <fun>
+
+# compress ["a";"a";"a";"a";"b";"c";"c";"a";"a";"d";"e";"e";"e";"e"];;
+- : string list = ["a"; "b"; "c"; "a"; "d"; "e"]
+
+# compress ["a";"z";"a";"a";"b";"c";"c";"a";"a";"d";"e";"e";"z";"e";"c";"a";"a";"d";"e";"i";"u";"i"];;
+- : string list =
+["a"; "z"; "a"; "b"; "c"; "a"; "d"; "e"; "z"; "e"; "c"; "a"; "d"; "e"; "i";
+ "u"; "i"]
+ 
+# compress ["a";"o";"o";"a";"o";"o";"o";"a";"a";"a";"e";"e";"o";"e";"a";"a";"a";"e";"e";"i";"i";"i"];;
+- : string list = ["a"; "o"; "a"; "o"; "a"; "e"; "o"; "e"; "a"; "e"; "i"]
+#
