@@ -43,3 +43,18 @@ val duplicate : 'a list -> 'a list = <fun>
 #  duplicate ["a";"b";"c";"c";"d"];;
 - : string list = ["a"; "a"; "b"; "b"; "c"; "c"; "c"; "c"; "d"; "d"]
 #
+
+# let rec at k = function
+        | [] -> None
+        | h :: t -> if k = 1 then Some h else at (k-1) t;;
+        
+val at : int -> 'a list -> 'a option = <fun>
+
+# at 3 [ "a" ; "b"; "c"; "d"; "e" ];;
+- : string option = Some "c"
+
+# at 3 [ "a" ];;
+- : string option = None
+#
+
+
