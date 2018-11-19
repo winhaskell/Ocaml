@@ -57,4 +57,24 @@ val at : int -> 'a list -> 'a option = <fun>
 - : string option = None
 #
 
+ ááházán.
+Characters 46-47:
+Warning 3: deprecated: ISO-Latin1 characters in identifiers
+Characters 48-49:
+Warning 3: deprecated: ISO-Latin1 characters in identifiers
+Characters 50-52:
+Warning 3: deprecated: ISO-Latin1 characters in identifiers
+Characters 53-55:
+Warning 3: deprecated: ISO-Latin1 characters in identifiers
+  hgéh
+Characters 61-64:
+Warning 3: deprecated: ISO-Latin1 characters in identifiers
+
+  Interrupted.
+  
+# let rec fact n = if n<2 then 1 else n*fact(n-1) ;;
+val fact : int -> int = <fun>
+
+# fact 8;;
+- : int = 40320
 
