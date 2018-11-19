@@ -78,3 +78,25 @@ val fact : int -> int = <fun>
 # fact 8;;
 - : int = 40320
 
+
+# type foo =
+      | Nothing
+      | Int of int
+      | Pair of int * int
+      | String of string;;
+type foo = Nothing | Int of int | Pair of int * int | String of string
+
+# String "hello";;
+- : foo = String "hello"
+
+# Pair (4, 5);;
+- : foo = Pair (4, 5)
+
+# Int 3;;
+- : foo = Int 3
+
+# Nothing;;
+- : foo = Nothing
+#
+
+
