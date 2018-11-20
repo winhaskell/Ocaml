@@ -1,0 +1,28 @@
+Sum multiples of 3 and 5
+
+TaskSum multiples of 3 and 5
+You are encouraged to solve this task according to the task description, using any language you may know.
+
+Task
+The objective is to write a function that finds the sum of all positive multiples of 3 or 5 below n.
+
+Show output for n = 1000.
+Extra credit: do this efficiently for n = 1e20 or higher. 
+
+
+# let sum_mults n =
+        let sum = ref 0 in
+            for i = 3 to (n - 1) do
+                  if (i mod 3) = 0 || (i mod 5) = 0 then
+                        sum := !sum + i;
+            done;
+          !sum;;
+          
+val sum_mults : int -> int = <fun>
+
+# print_endline (string_of_int (sum_mults 1000));;
+
+233168
+
+- : unit = ()
+#
