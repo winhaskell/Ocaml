@@ -1,5 +1,6 @@
 https://ocaml.org/learn/tutorials/99problems.html
 
+--------------------------------------------------------------------------------------------------------------------
 Sum multiples of 3 and 5
 
 TaskSum multiples of 3 and 5
@@ -31,9 +32,8 @@ val sum_mults : int -> int = <fun>
 
 
 
-
+--------------------------------------------------------------------------------------------------------------------
 Write a function last : 'a list -> 'a option that returns the last element of a list. (easy)
-
 # let rec last = function
      | [ ]    -> None
      | [x]    -> Some x
@@ -58,5 +58,32 @@ val last : 'a list -> 'a option = <fun>
 
 # last ["ad"; "!!!!!"];;
 - : string option = Some "!!!!!"
+
+--------------------------------------------------------------------------------------------------------------------
+Find the last but one (last and penultimate) elements of a list. (easy)
+# let rec last_two = function
+    | [] | [_] -> None
+        | [x;y] -> Some (x,y)
+      | _::t -> last_two t;;
+val last_two : 'a list -> ('a * 'a) option = <fun>
+
+# last_two [ "a" ];;
+- : (string * string) option = None
+
+# last_two [ "a" ; "b" ; "c" ; "d" ];;
+- : (string * string) option = Some ("c", "d")
+
+# last_two [ "a" ; "a"];;
+- : (string * string) option = Some ("a", "a")
+
+# last_two [ "a" ; "a"; "a"];;
+- : (string * string) option = Some ("a", "a")
+
+--------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
 
 
