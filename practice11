@@ -1,3 +1,5 @@
+https://ocaml.org/learn/tutorials/99problems.html
+
 Sum multiples of 3 and 5
 
 TaskSum multiples of 3 and 5
@@ -26,3 +28,35 @@ val sum_mults : int -> int = <fun>
 
 - : unit = ()
 #
+
+
+
+
+Write a function last : 'a list -> 'a option that returns the last element of a list. (easy)
+
+# let rec last = function
+     | [ ]    -> None
+     | [x]    -> Some x
+     | _ :: t -> last t;;
+
+val last : 'a list -> 'a option = <fun>
+
+# last [ "a" ; "b" ; "c" ; "d" ];;
+- : string option = Some "d"
+
+# last [];;
+- : 'a option = None
+
+# last ["ad"];;
+- : string option = Some "ad"
+
+# last ["ad", "!!!!!"];;
+- : (string * string) option = Some ("ad", "!!!!!")
+
+# last ["ad"; "!!!!!"];;
+- : string option = Some "!!!!!"
+
+# last ["ad"; "!!!!!"];;
+- : string option = Some "!!!!!"
+
+
