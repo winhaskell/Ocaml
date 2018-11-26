@@ -81,7 +81,6 @@ val last_two : 'a list -> ('a * 'a) option = <fun>
 
 --------------------------------------------------------------------------------------------------------------------
 
-
 Find the k'th element of a list. (easy)
 # let rec at k = function
     | [] -> None
@@ -98,8 +97,25 @@ val at : int -> 'a list -> 'a option = <fun>
 # at 3 [ "a" ; "b"; "c"; "d"; "e" ];;
 - : string option = Some "c"
 
+# Interrupted. --------------------------------------------------------------------------------------------------------------------
 
+Find the number of elements of a list. (easy)
+# let length list =
+    let rec aux n = function
+          | []   -> n
+          | _::t -> aux (n+1) t
+        in aux 0 list;;
+      
+val length : 'a list -> int = <fun>
 
+# length [ "a" ; "b" ; "c"];;
+- : int = 3
 
+# length [];;
+- : int = 0
+
+# length [ "a" ; "b" ; "c"; "a" ; "b" ; "c" ];;
+- : int = 6
+ 
 
 
