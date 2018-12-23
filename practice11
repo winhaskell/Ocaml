@@ -118,4 +118,6 @@ val length : 'a list -> int = <fun>
 - : int = 6
  
 
+# length [ "a" ; "b" ; "c"; "b" ; "c"; "b" ; "c"];;
+- : int = 7
 
