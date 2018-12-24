@@ -1,7 +1,7 @@
-https://gist.github.com/hk03ne/6ad87cee4bea8442ef61969db0acfb92
+https://gist.github.com/hk03ne/6ad87cee4bea8442ef61969db0acfb92 练习
 
 (* 
- * 日付の妥当性チェックとか曜日計算とか 
+ * 日付の妥当性チェックとか曜日計算とか   
  *)
 
 (* うるう年か調べる *)
