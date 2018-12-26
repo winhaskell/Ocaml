@@ -117,3 +117,46 @@ val insert : 'a -> 'a list -> 'a list = <fun>
 - : string list = ["igen"; "ok"; "sure"; "ya"; "yep"; "yep"; "yes"]
 #
 
+#  let rec sigma f = function
+        | [] -> 0
+        | x :: l -> f x + sigma f l;;
+        
+val sigma : ('a -> int) -> 'a list -> int = <fun>
+# sigma (fun x -> x * x) [1; 2; 3; 100];;
+- : int = 10014
+#
+# sigma;;
+- : ('a -> int) -> 'a list -> int = <fun>
+#
+
+# let rec fib x = if x <= 1 then 1 else fib (x - 1) + fib (x - 2);;
+val fib : int -> int = <fun>
+
+# fib 3;;
+- : int = 3
+# fib 8;;
+- : int = 34
+# fib 0;;
+- : int = 1
+# fib 1;;
+- : int = 1
+# fib 20;;
+- : int = 10946
+# fib 30;;
+- : int = 1346269
+# fib 80;;
+Interrupted.
+# fib 19;;
+- : int = 6765
+# fib 21;;
+- : int = 17711
+# fib 22
+  ;;
+- : int = 28657
+# fib 23;;
+- : int = 46368
+#
+# fib(-1);;
+- : int = 1
+#
+
