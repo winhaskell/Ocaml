@@ -65,6 +65,11 @@ Error: This expression has type float but an expression was expected of type
 - : float = 4.5
 #
 
+# float_of_int;;
+- : int -> float = <fun>
+#
+
+
 
 # let cub x = x*x*x;;
 val cub : int -> int = <fun>
@@ -77,5 +82,38 @@ val cub : int -> int = <fun>
 - : int = 1000
 # cub 100;;
 - : int = 1000000
+#
+
+# cub  ;;
+- : int -> int = <fun>
+#
+
+# let li = 1 :: 2 :: 3 :: [];;
+val li : int list = [1; 2; 3]
+# li;;
+- : int list = [1; 2; 3]
+# 12 :: li;;
+- : int list = [12; 1; 2; 3]
+# li;;
+- : int list = [1; 2; 3]
+
+Polymorphism: sorting lists           对列表排序 插入排序
+Insertion sort is defined using two recursive functions.
+
+# let rec sort = function
+        | [] -> []
+        | x :: l -> insert x (sort l)
+    and insert elem = function
+      | [] -> [elem]
+      | x :: l -> if elem < x then elem :: x :: l
+                else x :: insert elem l;;
+val sort : 'a list -> 'a list = <fun>
+val insert : 'a -> 'a list -> 'a list = <fun>
+
+# sort [2; 100; 90];;
+- : int list = [2; 90; 100]
+
+# sort ["yes"; "ok"; "sure"; "ya"; "yep"; "igen"; "yep"];;
+- : string list = ["igen"; "ok"; "sure"; "ya"; "yep"; "yep"; "yes"]
 #
 
