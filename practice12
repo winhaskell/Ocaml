@@ -55,4 +55,27 @@ Ocaml是强类型语言：这表示变量一旦建立就不能改变类型，并
 # 2 + 2.0;;
 Error: This expression has type float but an expression was expected of type
          int
+
+# 2.0 + 2;;
+Error: This expression has type float but an expression was expected of type
+         int
 #
+
+# (float_of_int 2) +. 2.5;;
+- : float = 4.5
+#
+
+
+# let cub x = x*x*x;;
+val cub : int -> int = <fun>
+
+# cub 9;;
+- : int = 729
+# cub 8;;
+- : int = 512
+# cub 10;;
+- : int = 1000
+# cub 100;;
+- : int = 1000000
+#
+
