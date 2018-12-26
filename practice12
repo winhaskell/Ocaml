@@ -1,3 +1,5 @@
+Ref> https://www.ibm.com/developerworks/cn/linux/sdk/ocaml/part1/index.html
+
 # let rec fact n = if n<2 then 1 else n*fact(n-1) ;;
 val fact : int -> int = <fun>
 
@@ -13,3 +15,26 @@ val fact3 : int -> int = <fun>
 - : int = 720
 #
  
+上面我们定义了一个 fact 函式。注意看到，O'Caml 用";;"终结一个语句。这一点作者也是不很感冒，
+但是";"在 O'Caml 中另有妙用，所以也没有什么办法。著名的 Alan J. Perlis 说过，"Syntactic sugar causes cancer of the semicolon."
+这也是没有办法的事情，除非你用 Lisp，但是 Lisp 又有多得让人头晕目眩的圆括号。
+
+
+
+# let next x = x+1;;
+val next : int -> int = <fun>
+
+# next 6;;
+- : int = 7
+
+# let comp f g x = f(g(x));;   复合函数的表达
+val comp : ('a -> 'b) -> ('c -> 'a) -> 'c -> 'b = <fun>
+
+# comp fact next 6;;           fact和next函数
+- : int = 5040
+
+# comp fact next 7;;
+- : int = 40320
+#
+
+
