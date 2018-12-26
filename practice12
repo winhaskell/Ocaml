@@ -160,3 +160,39 @@ Interrupted.
 - : int = 1
 #
 
+Elementary debugging > To conclude, here is the simplest way of spying over functions:
+# #trace fib;;  调试fib 是怎么得出计算结果的
+fib is now traced.
+# fib 5;;
+fib <-- 5
+fib <-- 3
+fib <-- 1
+fib --> 1
+fib <-- 2
+fib <-- 0
+fib --> 1
+fib <-- 1
+fib --> 1
+fib --> 2
+fib --> 3
+fib <-- 4
+fib <-- 2
+fib <-- 0
+fib --> 1
+fib <-- 1
+fib --> 1
+fib --> 2
+fib <-- 3
+fib <-- 1
+fib --> 1
+fib <-- 2
+fib <-- 0
+fib --> 1
+fib <-- 1  f0
+fib --> 1  f1
+fib --> 2  f2
+fib --> 3  f3 
+fib --> 5  f4 
+fib --> 8  f5
+- : int = 8
+#
