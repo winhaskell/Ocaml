@@ -1,0 +1,33 @@
+# [1; 2; 3];;
+- : int list = [1; 2; 3]
+
+[1; 2; 3]
+1 :: [2; 3]
+1 :: 2 :: [3]
+1 :: 2 :: 3 :: []
+
+
+Here is the elegant and concise equivalent in OCaml:
+
+# type foo =
+    | Nothing
+    | Int of int
+    | Pair of int * int
+    | String of string;;
+type foo = Nothing | Int of int | Pair of int * int | String of string
+
+That's the type definition. 
+First part of each | separated part is called the constructor. 
+It can be called anything, as long as it starts with a capital letter. 
+If the constructor can be used to define a value, it's followed by the of type part, 
+where type always starts with a lowercase letter. 
+In the above example, Nothing is used as a constant and the other constructors are used with values.
+
+To actually create things of this type you would write:
+
+Nothing
+Int 9
+Pair (7, 7)
+String "hello ocaml "
+...
+
