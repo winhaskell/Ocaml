@@ -1,0 +1,24 @@
+let rec fib = function
+  | 0 -> 1
+  | 1 -> 1
+  | n -> fib (n - 1) + fib (n - 2);;
+  
+# fib 1;;
+- : int = 1
+
+# fib 3;;
+- : int = 3
+
+# fib 5;;
+- : int = 8
+
+# fib 6;;
+- : int = 13
+
+https://exercism.io/tracks/ocaml
+
+ 
+The Language of Types
+https://www2.lib.uchicago.edu/keith/ocaml-class/type-sublanguage.html
+
+https://www2.lib.uchicago.edu/keith/ocaml-class/why.html
