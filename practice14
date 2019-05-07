@@ -29,3 +29,67 @@ http://www.cs.cornell.edu/courses/cs3110/2018fa/textbook/intro/ocaml.html
 http://www.cs.cornell.edu/courses/cs3110/2018fa/textbook/basics/interacting.html
 
 
+# let empty = [];;
+val empty : 'a list = []
+
+# 3::empty;;
+- : int list = [3]
+
+# let f x y = x + y;;
+val f : int -> int -> int = <fun>
+
+# f 3 4;;
+- : int = 7
+
+# f 9 88;;
+- : int = 97
+
+# let x = [ 2; 8; 5; ];;
+val x : int list = [2; 8; 5]
+
+# List.length x;;
+- : int = 3
+
+# List.hd x;;
+- : int = 2
+
+# List.tl x;;
+- : int list = [8; 5]
+
+# 4::x;;
+- : int list = [4; 2; 8; 5]
+
+# 1::9::4::x;;
+- : int list = [1; 9; 4; 2; 8; 5]
+
+# [ 2; 8; 5; ] @ [ 3; 4; ]
+  ;;
+- : int list = [2; 8; 5; 3; 4]
+
+# type person = {mutable name:string; mutable age:int };;
+type person = { mutable name : string; mutable age : int; }
+
+# let mj = {name="Mary Jane"; age=19 };;
+val mj : person = {name = "Mary Jane"; age = 19}
+
+# print_string mj.name;;
+Mary Jane- : unit = ()
+
+# fun x y -> x +. y ;;
+- : float -> float -> float = <fun>
+
+# (fun x y -> x +. y) 3. 4. ;;
+- : float = 7.
+
+# let rec f n = if n == 1 then 1 else n * f (n-1);;
+val f : int -> int = <fun>
+# f 20;;
+- : int = 2432902008176640000
+#
+
+# let rec f n = match n with 0 -> 0 | 1 -> 1 | x -> f (n-1) + f (n-2);;
+val f : int -> int = <fun>
+# f 20;;
+- : int = 6765
+#
+
