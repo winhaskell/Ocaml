@@ -95,5 +95,30 @@ val f : int -> int = <fun>
 
 http://caml.inria.fr/pub/docs/oreilly-book/
 
+# let imm_stack init = object
+    val v = init
+
+      method pop =
+        match v with
+        | hd :: tl -> Some (hd, {< v = tl >})
+      | [] -> None
+
+      method push hd =
+      {< v = hd :: v >}
+      end ;;
+      
+val imm_stack :
+  'a list -> (< pop : ('a * 'b) option; push : 'a -> 'b > as 'b) = <fun>
+  
+# let s = imm_stack [3; 2; 1] ;;
+val s : < pop : (int * 'a) option; push : int -> 'a > as 'a = <obj>
+# let t = s#push 4 ;;
+val t : < pop : (int * 'a) option; push : int -> 'a > as 'a = <obj>
+# s#pop ;;
+- : (int * (< pop : 'a; push : int -> 'b > as 'b)) option as 'a =
+Some (3, <obj>)
+#  t#pop ;;
+- : (int * (< pop : 'a; push : int -> 'b > as 'b)) option as 'a =
+Some (4, <obj>)
 
 
