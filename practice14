@@ -93,3 +93,7 @@ val f : int -> int = <fun>
 - : int = 6765
 #
 
+http://caml.inria.fr/pub/docs/oreilly-book/
+
+
+
