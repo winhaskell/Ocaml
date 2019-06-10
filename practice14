@@ -122,3 +122,33 @@ Some (3, <obj>)
 Some (4, <obj>)
 
 
+
+
+# let plus = ( + );;
+val plus : int -> int -> int = <fun>
+
+# plus 2 3;;
+- : int = 5
+
+#  List.map (plus 2) [1; 2; 3];;
+- : int list = [3; 4; 5]
+
+
+#  List.map (plus 3) [8;9;100];;
+- : int list = [11; 12; 103]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
