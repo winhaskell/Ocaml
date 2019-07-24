@@ -1,0 +1,61 @@
+# type 'a t =
+#   | Empty
+#   | Item of 'a * 'a t;;
+type 'a t = Empty | Item of 'a * 'a t
+# let rec push stack item = match stack with
+#   | Empty -> Item (item, Empty)
+#   | tail -> Item (item, tail);;
+val push : 'a t -> 'a -> 'a t = <fun>
+# let pop = function
+#   | Empty -> None
+#   | Item (head, rest) -> Some (head, rest)
+# ;;
+val pop : 'a t -> ('a * 'a t) option = <fun>
+# let peek = function
+#   | Empty -> None
+#   | Item (head, _) -> Some head;;
+val peek : 'a t -> 'a option = <fun>
+# let rec stack_of_list = function
+#   | [] -> Empty
+#   | head :: tail -> Item (head, stack_of_list tail)
+# ;;
+val stack_of_list : 'a list -> 'a t = <fun>
+# let rec list_of_stack = function
+#   | Empty -> []
+#   | Item (head, rest) -> head :: list_of_stack rest;;
+val list_of_stack : 'a t -> 'a list = <fun>
+# let rec fmap f = function
+#   | Empty -> Empty
+#   | Item (head, tail) -> Item (f head, fmap f tail);;
+val fmap : ('a -> 'b) -> 'a t -> 'b t = <fun>
+# assert (push Empty 5 = Item (5, Empty));;
+- : unit = ()
+# assert (push (Item (5, Empty)) 6 = Item (6, Item (5, Empty)));;
+- : unit = ()
+# assert (list_of_stack (Item (5, Item (2, Item (10, Empty)))) = [5; 2; 10]);;
+- : unit = ()
+# assert (list_of_stack (Item (5, Item (2, Item (10, Empty))));;
+File "", line 1, characters 60-62:
+Error: Syntax error: ')' expected
+File "", line 1, characters 7-8:
+Error: This '(' might be unmatched
+# assert (stack_of_list [1; 2; 3] = Item (1, Item (2, Item (3, Empty))));;
+- : unit = ()
+# ;
+File "", line 1, characters 72-73:
+Error: Syntax error
+# assert (stack_of_list [1; 2; 3] ;;
+File "", line 1, characters 32-34:
+Error: Syntax error: ')' expected
+File "", line 1, characters 7-8:
+Error: This '(' might be unmatched
+# assert (stack_of_list [] = Empty);;
+- : unit = ()
+
+
+
+
+
+
+
+
