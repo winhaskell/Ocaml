@@ -31,3 +31,25 @@ Pair (7, 7)
 String "hello ocaml "
 ...
 
+
+# 2.0 + 3.0;;
+Error: This expression has type float but an expression was expected of type
+         int
+# (2 + 3 : int) * 7;;
+- : int = 35
+# (2 + 3 : int)       
+  ;;
+- : int = 5
+# 
+
+
+
+
+
+
+
+
+
+
+
+
