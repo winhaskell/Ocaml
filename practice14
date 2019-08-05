@@ -164,6 +164,48 @@ I'm looking at element 10 now
 
 
 
+# let rec sumTo (n:int) : int = 
+  if n <= 0 then
+    0
+  else
+    n + sumTo (n-1)        
+  ;;
+val sumTo : int -> int = <fun>
+# let _ =
+  Printf.printf "The sum of the numbers from 0 to 8 is %d\n" (sumTo 8)  
+  ;;
+The sum of the numbers from 0 to 8 is 36
+
+- : unit = ()
+  
+  Printf.printf "The sum of the numbers from 0 to 10 is %d\n" (sumTo 10);; 
+The sum of the numbers from 0 to 10 is 55
+- : unit = ()
+
+# let _ = Printf.printf "The sum of the numbers from 0 to 100 is %d\n" (sumTo 100);;
+The sum of the numbers from 0 to 100 is 5050
+
+- : unit = ()
+# let rec sumTo2 (n:int) =  if n <= 0 then
+    0
+  else
+    n + sumTo2 (n-1)      ;;
+val sumTo2 : int -> int = <fun>
+
+# let _ = Printf.printf "The sum of the numbers from 0 to 12 is %d\n" (sumTo2 12);;
+# let _ = Printf.printf "The sum of the numbers from 0 to 12 is %d\n" (sumTo2 12);;
+The sum of the numbers from 0 to 12 is 78
+- : unit = ()
+# 
+
+
+
+
+
+
+
+
+
 
 
 
