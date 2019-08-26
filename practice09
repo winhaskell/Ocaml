@@ -99,3 +99,66 @@ val is_palindrome : 'a list -> bool = <fun>
 - : bool = false
 #
 
+
+# type t =
+  | Male
+  | Female;;    
+type t = Male | Female
+
+# let fst (x, _) = x;;
+val fst : 'a * 'b -> 'a = <fun>
+
+# let snd (_, y) = y;;
+val snd : 'a * 'b -> 'b = <fun>
+
+# let eq_pair = function
+    | (x, x) -> true
+    | _ -> false;;  
+Error: Variable x is bound several times in this matching
+
+# let eq_pair = function
+  | (x, y) when x = y -> true
+  | _ -> false;;    
+val eq_pair : 'a * 'a -> bool = <fun>
+
+
+
+# let is_upper = function
+  | 'A' .. 'Z' -> true
+  | _ -> false;;    
+val is_upper : char -> bool = <fun>
+
+# let rec fib = function
+  | (0 | 1) as i -> i
+  | i -> fib(i-2) + fib(i-1);;    
+val fib : int -> int = <fun>
+
+# fib
+  ;;
+- : int -> int = <fun>
+
+# fib 23;;
+- : int = 28657
+# fib 4
+  ;;
+- : int = 3
+# fib 0;;
+- : int = 0
+# fib 1;;
+- : int = 1
+# fib 2;;
+- : int = 1
+# fib 3;;
+- : int = 2
+ 
+# fib 9;;
+- : int = 34
+# fib 10;;
+- : int = 55
+# fib 11;;
+- : int = 89
+# fib 12;;
+- : int = 144
+# 
+
+
