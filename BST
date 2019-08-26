@@ -1,5 +1,8 @@
 Binary Search Tree (BST) is one of the most classic data structures. The definition for its structure is shown as below:
 
+http://typeocaml.com/2014/12/19/how-to-become-a-bst-ninja-genin/
+https://haifengl.wordpress.com/2014/07/07/ocaml-algebraic-data-types/
+
 It consists of Nodes and Leaves.
 A Node has a child bst on the left side, a key (, a data), and a child bst on the right side. Note here a node's left or right
 child is not a node, instead, is indeed another binary search tree.
