@@ -1,0 +1,32 @@
+Binary Search Tree (BST) is one of the most classic data structures. The definition for its structure is shown as below:
+
+It consists of Nodes and Leaves.
+A Node has a child bst on the left side, a key (, a data), and a child bst on the right side. Note here a node's left or right
+child is not a node, instead, is indeed another binary search tree.
+A Leaf has nothing but act only as a STOP sign.
+
+
+# type 'a bst_t =  
+  | Leaf
+  | Node of 'a bst_t * 'a * 'a bst_t     ;;
+type 'a bst_t = Leaf | Node of 'a bst_t * 'a * 'a bst_t
+# 
+
+
+The important feature that makes BST unique is for any node 
+all keys from its left child are smaller than its own key
+all keys from its right child are bigger (assumming keys are distinct)
+
+# let rec insert x = function  
+  | Leaf -> Node (Leaf, x, Leaf) (* Leaf is a STOP *)
+  | Node (left, k, right) ->
+    if x < k then Node (insert x left, k, right) (* if x is smaller, go left *)
+    else Node (left, k, insert x right) (* otherwise, go right *)        ;;
+val insert : 'a -> 'a bst_t -> 'a bst_t = <fun>
+# 
+
+# let rec mem x = function  
+  | Leaf -> false
+  | Node (left, k, right) -> if x < k then mem x left else if x = k then true else mem x right ;;
+val mem : 'a -> 'a bst_t -> bool = <fun>
+# 
