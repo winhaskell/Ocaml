@@ -161,4 +161,38 @@ val fib : int -> int = <fun>
 - : int = 144
 # 
 
+# let (+) x y = x - y;;
+val ( + ) : int -> int -> int = <fun>
+# 1 +2;;
+- : int = -1
+# 1-2;;
+- : int = -1
+
+
+# let sqr x = x *. x;;
+val sqr : float -> float = <fun>
+
+# let (|>) x f = f x ;;
+val ( |> ) : 'a -> ('a -> 'b) -> 'b = <fun>
+ 
+# 1. |> (+.) 2. |> sqr;;
+- : float = 9.
+# 
+# 1. |> (+.) 2;;
+Error: This expression has type int but an expression was expected of type float
+# 
+# 4.|> sqr;;
+- : float = 16.
+
+# 99|> sqr;;
+Error: This expression has type float -> float but an expression was expected of type int -> 'a
+
+# 99.|> sqr;;
+- : float = 9801.
+# 
+
+
+
+
+
 
