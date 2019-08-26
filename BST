@@ -30,3 +30,32 @@ val insert : 'a -> 'a bst_t -> 'a bst_t = <fun>
   | Node (left, k, right) -> if x < k then mem x left else if x = k then true else mem x right ;;
 val mem : 'a -> 'a bst_t -> bool = <fun>
 # 
+
+# let rec height = function  
+  | Leaf -> 0
+  | Node (left, _, right) -> 1 + max (height left) (height right)    ;;
+val height : 'a bst_t -> int = <fun>
+
+
+
+# let rec from_depth d cur_d = function  
+  | Leaf -> []
+  | Node (left, k, right) ->
+    if cur_d = d then [k]
+    else from_depth d (cur_d + 1) left @ from_depth d (cur_d + 1) right  ;;
+val from_depth : int -> int -> 'a bst_t -> 'a list = <fun>
+# 
+
+
+# let all_keys_at depth bst = from_depth depth 0 bst  ;;
+val all_keys_at : int -> 'a bst_t -> 'a list = <fun>
+# 
+
+
+
+
+
+
+
+
+
