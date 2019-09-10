@@ -1,3 +1,24 @@
+A good programmer has to learn how to learn new languages.
+
+We use a zillion different programming languages to communicate with machines and one another:
+
+general purpose and scripting: Fortran, Lisp, Basic, C, Pascal, Scheme, C++, Java, C#, Visual Basic, Perl, Python, 
+Ruby, PHP, Javascript, Clojure, Scala, Erlang, Swift, ...
+
+tools: awk, sed, tcl, sh, csh, bash, ...
+
+search: regular expressions, browser queries, SQL, ...
+
+display and rendering: PostScript, PDF, HTML, XML, ...
+
+hardware: CCS, VHDL, Verilog, ...
+
+theorem proving and mathematics: Mathematica, Maple, Matlab, R, NuPRL, Isabelle/HOL, ACL2, Coq
+
+It's crucial that you understand the principles behind programming that transcend the specifics of any specific language. 
+There's no better way to get at these principles than to approach programming from a completely different perspective.
+
+
 OCaml教程
 https://ocaml.org/learn/tutorials/functional_programming.zh.html
 https://ocaml.org/docs/
