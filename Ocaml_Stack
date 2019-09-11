@@ -1,0 +1,25 @@
+Ocaml Stack 
+
+# let s = Stack.create ;;
+val s : unit -> 'a Stack.t = <fun>
+
+# Stack.push 2 s;;
+Error: This expression has type unit -> 'a Stack.t
+       but an expression was expected of type int Stack.t
+ 
+# let s = Stack.create ();;
+val s : '_a Stack.t = <abstr>
+
+# Stack.push 2 s;;
+- : unit = ()
+
+# Stack.push 1 s;;
+- : unit = ()
+
+# Stack.pop 1 s;;
+Error: This expression has type int but an expression was expected of type
+         ('a -> 'b) Stack.t
+# 
+
+
+
