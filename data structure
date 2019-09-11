@@ -63,4 +63,14 @@ OCaml Towards Clarity and Grace
 https://medium.com/@huund/ocaml-towards-clarity-and-grace-9c000869b3fc
 
 
+Purely Functional Data Structures
+Most books on data structures assume an imperative language like C or C++. 
+However, data structures for these languages do not always translate well to functional languages such as 
+Standard ML, Haskell, or Scheme. This book describes data structures from the point of view of functional languages,
+with examples, and presents design techniques so that programmers can develop their own functional data structures. 
+It includes both classical data structures, such as red-black trees and binomial queues, and a host of new data structures
+developed exclusively for functional languages. All source code is given in Standard ML and Haskell, and most of
+the programs can easily be adapted to other functional languages. This handy reference for professional programmers 
+working with functional languages can also be used as a tutorial or for self-study.
+
 
