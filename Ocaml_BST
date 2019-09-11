@@ -1,0 +1,66 @@
+type 'a bst = Empty | Node of 'a * 'a bst * 'a bst;;
+
+exception Duplicate
+exception Unknown
+
+(* Creates a new tree with the value inserted into that tree. *)
+let rec insert x tree =
+	match tree with
+	| Empty -> Node(x, Empty, Empty)
+	| Node(v, l, r) ->
+		if x < v then Node(v, insert x l, r)
+		else if x > v then Node(v, l, insert x r)
+		else raise Duplicate;;
+
+(* Checks, if the value is within the tree. *)
+let rec member x tree =
+	match tree with
+	| Empty -> false
+	| Node(v, l, r) ->
+		if x = v then true
+		else if x < v then member x l
+		else member x r;;
+
+(* Searches the lowest value within the given tree. *)
+let rec min tree =
+	match tree with
+	| Empty -> raise Unknown
+	| Node(v, l, r) ->
+		if l = Empty then v
+		else min l;;
+
+(* Creates a new tree with the value deleted from that tree. *)
+let rec delete x tree =
+	match tree with
+	| Empty -> raise Unknown
+	| Node(v, l, r) ->
+		if x = v then
+			(* If the node has zero or one child, it can simply be removed. *)
+			if l = Empty && r = Empty then Empty
+			else if l = Empty then r
+			else if r = Empty then l
+			(* Otherwise the node gets replaced with the minimum node of the
+			   right subtree and the right subtree gets replaced with one,
+				 in which the minimum is deleted from *)
+			else Node(min r, l, delete (min r) r)
+		else if x < v then Node(v, delete x l, r)
+		else Node(v, l, delete x r);;
+
+(* Test cases. *)
+let print_bool b =
+        print_endline (if b then "true" else "false");;
+
+let one = insert 13 (insert 1 (insert 10 Empty));;
+
+print_bool (one = Node(10, Node(1, Empty, Empty), Node(13, Empty, Empty)));;
+print_bool (member 13 one);;
+print_bool (not (member 12 one));;
+
+let two = delete 10 one;;
+
+print_bool (two = Node(13, Node(1, Empty, Empty), Empty));;
+
+
+https://gist.github.com/FPar/eefc21614a855e52943acbaf307e22f1
+
+
