@@ -123,3 +123,61 @@ val remove : 'a -> 'a list -> 'a list = <fun>
 #
 
 
+
+
+let max (n : int) (m : int) : int =
+
+  if n > m then n else m;;      
+val max : int -> int -> int = <fun>
+# max 8 9;;
+- : int = 9
+# et message = "Hello world";;
+
+# rintf "%s\n" message)
+  (printf "%s\n" message)ld";;
+  ror: Unbound value et
+        
+  let message = "Hello world";;
+Error: Syntax error
+# open Printf
+  let message = "Hello world";;
+val message : string = "Hello world"
+# (printf "%s\n" message)
+  ;;
+Hello world
+- : unit = ()
+# let max (n : int) (m : int) : int =
+
+  if n > m then n else m;;
+
+# 
+   
+  rintf "Should be 5: %d\n" (max 5 4));
+  (printf "Should be 5: %d\n" (max 5 4));
+  rintf "Should be 4: %d\n" (max 3 4));
+  (printf "Should be 4: %d\n" (max 3 4));
+  rintf "Should be 4: %d\n" (max 4 4));
+  (printf "Should be 4: %d\n" (max 4 4));
+    val max : int -> int -> int = <fun>
+                    
+ 
+# let rec factorial (n : int) : int =
+
+  if n <= 1 then 1
+
+  else n * (factorial (n - 1));;
+
+        val factorial : int -> int = <fun>
+#   
+  (factorial 3);;
+- : int = 6
+# (factorial 8);;  
+- : int = 40320
+# (factorial 10);; 
+- : int = 3628800
+# 
+
+
+
+
+
