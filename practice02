@@ -70,3 +70,28 @@ Error: Unbound value last
 - : int = 30
 #
 
+
+
+
+# let rec sort lst =
+    match lst with
+          [] -> []
+      | head :: tail -> insert head (sort tail)
+    and insert elt lst =
+      match lst with
+        [] -> [elt]
+      | head :: tail -> if elt <= head then elt :: lst else head :: insert elt tail
+    ;;
+val sort : 'a list -> 'a list = <fun>
+val insert : 'a -> 'a list -> 'a list = <fun>
+# sort [6;2;5;3];;
+- : int list = [2; 3; 5; 6]
+
+# let pi = 4.0 *. atan 1.0;;
+val pi : float = 3.1415926535897931
+#
+
+type 'a bst =  
+  | Leaf 
+  | Node of 'a bst * 'a * 'a bst
+
