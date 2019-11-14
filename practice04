@@ -91,4 +91,18 @@ val sum : int list -> int = <fun>
 - : int = 1257
 #
 
+# let rec insert_at x n = function
+    | [] -> [x]
+    | h :: t as l -> if n = 0 then x :: l else h :: insert_at x (n-1) t;;    
+val insert_at : 'a -> int -> 'a list -> 'a list = <fun>
+# insert_at "alfa" 1 ["a";"b";"c";"d"];;
+- : string list = ["a"; "alfa"; "b"; "c"; "d"]
+# 
+# insert_at "alfa" 3 ["a";"b";"c";"d"];;    
+- : string list = ["a"; "b"; "c"; "alfa"; "d"]
+# 
+
+
+
+
 
