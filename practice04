@@ -103,6 +103,22 @@ val insert_at : 'a -> int -> 'a list -> 'a list = <fun>
 # 
 
 
+# let rec gcd a b =
+    if b = 0 then a else gcd b (a mod b);;  
+val gcd : int -> int -> int = <fun>
+# gcd 13 26;;
+- : int = 13
+# gcd 13 27;; 
+- : int = 1
+# gcd 9811 99;;
+- : int = 1
+# 
+
+
+
+
+
+
 
 
 
