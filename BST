@@ -57,6 +57,103 @@ val all_keys_at : int -> 'a bst_t -> 'a list = <fun>
 
 
 
+# open Queue;;
+# type tree =
+        |Leaf
+        |Node of tree * int * tree
+
+    ;;
+type tree = Leaf | Node of tree * int * tree
+
+# let rec insert r n =
+        match r with
+        |Leaf->Node(Leaf, n,Leaf)
+        |Node(left,value,right)-> if n < value then Node((insert left n), value,right)
+                                   else if n > value then Node(left, value,(insert right n))
+                                   else Node(left,value,right)
+    ;;
+val insert : tree -> int -> tree = <fun>
+
+# let rec count t =
+        match t with
+                Leaf->0
+                |Node(l,v,r)-> 1+ count l + count r
+;;
+val count : tree -> int = <fun>
+
+# let rec height t=
+        match t with
+        |Leaf -> (-1)
+        |Node(l,v,r)->1 + max (height l) (height r)
+;;
+val height : tree -> int = <fun> 
+
+# let rec inorder t =
+        match t with
+        |Leaf->print_string ""
+        |Node(l,v,r)->
+                   (inorder l);
+                 print_string (string_of_int v);print_string "->";
+                   (inorder r)
+    ;;
+val inorder : tree -> unit = <fun>
+#
+  ;;
+  
+# let rec preorder t =
+        match t with
+        |Leaf->print_string ""
+        |Node(l,v,r)->
+                        print_string (string_of_int v);print_string "->";
+                        (preorder l);
+                        (preorder r)
+;;
+  val preorder : tree -> unit = <fun>
+  
+# let rec postorder t =
+        match t with
+        |Leaf->print_string ""
+        |Node(l,v,r)->
+                        (postorder l);
+                        (postorder r);
+                        print_string (string_of_int v);print_string "->";
+;;
+val postorder : tree -> unit = <fun>
+
+# let rec aux queue =
+                if Queue.is_empty queue then () else
+                let c = Queue.pop queue in
+                        match c with
+                        |Leaf ->aux queue
+                        |Node(l,v,r)->print_int v; print_string ",";
+                                        let _= Queue.push l queue in
+                                        let _ = Queue.push r queue in
+                        aux queue
+  ;;
+val aux : tree Queue.t -> unit = <fun>
+
+# let print_level_order t=
+        let q=Queue.create () in let _ = Queue.push t q in
+        aux q; print_string "\n"
+;;
+
+val print_level_order : tree -> unit = <fun>
+
+# let root = List.fold_left insert Leaf [100;50;200;10;60;250;300];;
+val root : tree =
+  Node (Node (Node (Leaf, 10, Leaf), 50, Node (Leaf, 60, Leaf)), 100,
+  Node (Leaf, 200, Node (Leaf, 250, Node (Leaf, 300, Leaf))))
+  
+# preorder root;;
+100->50->10->60->200->250->300->- : unit = ()
+# inorder root;;
+10->50->60->100->200->250->300->- : unit = ()
+# postorder root;;
+10->60->50->300->250->200->100->- : unit = ()
+# print_level_order root;;
+100,50,200,10,60,250,300,
+- : unit = ()
+
 
 
 
