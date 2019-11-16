@@ -62,3 +62,31 @@ val insert_sort : 'a list -> 'a list = <fun>
 #
 
 
+
+# fun x y -> x +. y ;;
+- : float -> float -> float = <fun>
+# let f = fun n -> n + 1;;
+val f : int -> int = <fun>
+# f 2;;
+- : int = 3
+# let f x = x + 1;;
+val f : int -> int = <fun>
+# f 3;;
+- : int = 4
+# let f x y = x + y;;
+val f : int -> int -> int = <fun>
+# f 3 4;;
+- : int = 7
+
+# let x = [ 2; 8; 5; ];;
+val x : int list = [2; 8; 5]
+# List.length x;;
+- : int = 3
+# [ 2; 8; 5; ] @ [ 3; 4; ]
+  ;;
+- : int list = [2; 8; 5; 3; 4]
+# let rec f n = if n == 1 then 1 else n * f (n-1);;
+val f : int -> int = <fun>
+# f 3;;
+- : int = 6
+
