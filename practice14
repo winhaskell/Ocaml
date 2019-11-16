@@ -229,6 +229,62 @@ Error: This expression has type int but an expression was expected of type
 
 
 
+# let max (n : int) (m : int) : int =  if n > m then n else m;;
+val max : int -> int -> int = <fun>
+# max 23 667;;
+- : int = 667
+# max 23 22;;
+- : int = 23
+
+# let rec factorial (n : int)  = if n <= 1 then 1 else n * (factorial (n - 1));;
+val factorial : int -> int = <fun>
+# factorial 3;;
+- : int = 6
+# factorial 2;;
+- : int = 2
+# factorial 1;;
+- : int = 1
+# let rec factorial (n )  = if n <= 1 then 1 else n * (factorial (n - 1));;
+val factorial : int -> int = <fun>
+# factorial 3;;
+- : int = 6
+# factorial 2;;
+- : int = 2
+# factorial 1.1;;
+Characters 10-13:
+  factorial 1.1;;
+            ^^^
+Error: This expression has type float but an expression was expected of type
+         int
+
+# type btnode = | Leaf | Node of string * btnode * btnode;;
+type btnode = Leaf | Node of string * btnode * btnode
+# Node("a",Node("b", Leaf, Leaf), Node("c", Leaf, Leaf))  ;;
+- : btnode = Node ("a", Node ("b", Leaf, Leaf), Node ("c", Leaf, Leaf))
+# Node("a", Node("b", Leaf, Leaf), Leaf) ;;
+- : btnode = Node ("a", Node ("b", Leaf, Leaf), Leaf)
+
+# type animal = Dog of string | Cat of string ;;
+type animal = Dog of string | Cat of string
+# let say x = match x with | Dog x -> x ^ " says woof" | Cat x -> x ^ " says meow" ;;
+val say : animal -> string = <fun>
+# say (Cat "Fluffy") ;;
+- : string = "Fluffy says meow"
+
+# let rec sum_list l = match l with | [] -> 0 | head :: tail -> head + (sum_list tail) ;;
+val sum_list : int list -> int = <fun>
+# sum_list [1;2;3;4;5;6;7;8;9;10;11;13;20] ;;
+- : int = 99
+
+# let rec factorial n = if n = 0 then 1 else n * factorial (n-1) ;;
+val factorial : int -> int = <fun>
+
+# factorial 6;;
+- : int = 720
+
+# factorial 12;;
+- : int = 479001600
+#
 
 
 
