@@ -139,20 +139,27 @@ val aux : tree Queue.t -> unit = <fun>
 
 val print_level_order : tree -> unit = <fun>
 
-# let root = List.fold_left insert Leaf [100;50;200;10;60;250;300];;
+let root = List.fold_left insert Leaf [1000;101;500;89;10;60;689;278];;
 val root : tree =
-  Node (Node (Node (Leaf, 10, Leaf), 50, Node (Leaf, 60, Leaf)), 100,
-  Node (Leaf, 200, Node (Leaf, 250, Node (Leaf, 300, Leaf))))
-  
+  Node
+   (Node (Node (Node (Leaf, 10, Node (Leaf, 60, Leaf)), 89, Leaf), 101,
+     Node (Node (Leaf, 278, Leaf), 500, Node (Leaf, 689, Leaf))),
+   1000, Leaf)
+
 # preorder root;;
-100->50->10->60->200->250->300->- : unit = ()
+1000->101->89->10->60->500->278->689->- : unit = ()
+
 # inorder root;;
-10->50->60->100->200->250->300->- : unit = ()
+10->60->89->101->278->500->689->1000->- : unit = ()
+
 # postorder root;;
-10->60->50->300->250->200->100->- : unit = ()
+60->10->89->278->689->500->101->1000->- : unit = ()
+
 # print_level_order root;;
-100,50,200,10,60,250,300,
+1000,101,89,500,10,278,689,60,
 - : unit = ()
+#
+
 
 
 
