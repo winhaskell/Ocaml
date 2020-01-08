@@ -192,6 +192,17 @@ Error: This expression has type float -> float but an expression was expected of
 # 
 
 
+# let rec gcd a b = if b=0 then a else gcd b (a mod b);;
+val gcd : int -> int -> int = <fun>
+
+# gcd 999 33;;
+- : int = 3
+
+# gcd 10 20;;
+- : int = 10
+#
+
+
 
 
 
