@@ -203,6 +203,17 @@ val gcd : int -> int -> int = <fun>
 #
 
 
+#  let rec compress = function
+      | a :: (b :: _ as t) -> if a = b then compress t else a :: compress t
+      | smaller -> smaller;;
+val compress : 'a list -> 'a list = <fun>
+
+# compress ["a";"b";"a";"a";"c";"c";"c";"d";"d";"d";"e";"h";"h";"h"];;
+- : string list = ["a"; "b"; "a"; "c"; "d"; "e"; "h"]
+#
+
+
+
 
 
 
