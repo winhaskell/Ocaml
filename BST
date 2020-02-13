@@ -2,6 +2,8 @@ Binary Search Tree (BST) is one of the most classic data structures. The definit
 
 http://typeocaml.com/2014/12/19/how-to-become-a-bst-ninja-genin/
 https://haifengl.wordpress.com/2014/07/07/ocaml-algebraic-data-types/
+https://www.cs.umd.edu/class/spring2016/cmsc330/code/polymorphic.html
+
 
 It consists of Nodes and Leaves.
 A Node has a child bst on the left side, a key (, a data), and a child bst on the right side. Note here a node's left or right
@@ -61,8 +63,7 @@ val all_keys_at : int -> 'a bst_t -> 'a list = <fun>
 # type tree =
         |Leaf
         |Node of tree * int * tree
-
-    ;;
+;;
 type tree = Leaf | Node of tree * int * tree
 
 # let rec insert r n =
@@ -159,8 +160,6 @@ val root : tree =
 1000,101,89,500,10,278,689,60,
 - : unit = ()
 #
-
-
 
 
 
