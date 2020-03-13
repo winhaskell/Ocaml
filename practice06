@@ -70,3 +70,61 @@ Error: Illegal character (\022)
 # let b = (Apple, Orange);;
 val b : fruit * fruit = (Apple, Orange)
 #
+
+
+
+--------------------------------------------------------
+let int_to_bool bool = if bool then 1 else 0;;
+
+let triangle_inequality a b c =
+    let comp1 = a < (b+c) in
+    let comp2 = b < (a+c) in
+    let comp3 = c < (a+b) in
+    comp1 && comp2 && comp3
+
+let is_equilateral a b c =
+  if triangle_inequality a b c then
+    let comp1 = int_to_bool (a=b) in
+    let comp2 = int_to_bool (a=c) in
+    let comp3 = int_to_bool (b=c) in 
+    comp1 + comp2 + comp3 = 3
+  else false
+;;
+
+let is_isosceles a b c =
+  if triangle_inequality a b c then
+    let comp1 = int_to_bool (a=b) in
+    let comp2 = int_to_bool (a=c) in
+    let comp3 = int_to_bool (b=c) in 
+    comp1 + comp2 + comp3 >=1
+  else false
+;;
+
+let is_scalene a b c =
+  if triangle_inequality a b c then
+    let comp1 = int_to_bool (a=b) in
+    let comp2 = int_to_bool (a=c) in
+    let comp3 = int_to_bool (b=c) in 
+    comp1 + comp2 + comp3 = 0
+  else false
+;;
+
+
+# triangle_inequality 6 6 6;;
+- : bool = true
+# triangle_inequality 3 4 5;;
+- : bool = true
+# triangle_inequality 1 2 1;;
+- : bool = false
+# triangle_inequality 6 7 13;;
+- : bool = false
+# triangle_inequality 6 7 12;;
+- : bool = true
+# triangle_inequality 0 0 0;; 
+Error: Syntax error
+# triangle_inequality 1 1 1;; 
+- : bool = true
+# 
+
+
+
