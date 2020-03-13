@@ -43,6 +43,48 @@ Error: This expression has type float but an expression was expected of type
 # 
 
 
+----------------------------------------------
+
+# let rec factorial x = 
+  if (0 > x) then (raise Exit) else
+  match x with
+      0 -> 1
+    | n -> (n * (factorial (n - 1)))        ;;
+val factorial : int -> int = <fun>
+
+# (factorial 5);;
+- : int = 120
+# List.map;;
+- : ('a -> 'b) -> 'a list -> 'b list = <fun>
+# List.filter;;
+- : ('a -> bool) -> 'a list -> 'a list = <fun>
+# List.fold_right;;
+- : ('a -> 'b -> 'b) -> 'a list -> 'b -> 'b = <fun>
+
+# List.map (fun x -> x + 1) [1;2;3;4];;
+- : int list = [2; 3; 4; 5]
+# List.filter (fun x -> true) [1;2;3;4;5];;
+- : int list = [1; 2; 3; 4; 5]
+# List.filter (fun x -> (x mod 2) = 0) [1;2;3;4;5];;
+- : int list = [2; 4]
+# List.filter (fun x -> false) [1;2;3;4;5];;
+- : int list = []
+
+
+# let leap_year x = x mod 4 == 0 && (x mod 100 != 0 ||x mod 400 == 0) ;;
+val leap_year : int -> bool = <fun>
+# leap_year 2001;;
+- : bool = false
+# leap_year 1900;;
+- : bool = false
+# leap_year 2017;;
+- : bool = false
+# leap_year 2020;;
+- : bool = true
+# leap_year 2016;;
+- : bool = true
+# 
+
 
 
 
