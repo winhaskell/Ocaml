@@ -1,3 +1,16 @@
+# 2.2+.2.2;;
+- : float = 4.4
+
+# 9+.9.9;;
+Error: This expression has type int but an expression was expected of type
+         float
+
+# 9.0+.9.9;;
+- : float = 18.9
+
+# 
+
+
 # let isUru y=
   if (y mod 4) = 0 then
         not(y mod 100 = 0 && not(y mod 400 = 0))
@@ -94,4 +107,29 @@ val pi : float = 3.1415926535897931
 type 'a bst =  
   | Leaf 
   | Node of 'a bst * 'a * 'a bst
+
+
+
+# let an = ["cat";"bird";"elephant"];;
+val an : string list = ["cat"; "bird"; "elephant"]
+
+# List.map String.length an;;
+- : int list = [3; 4; 8]
+
+# 1::2::3::[];;
+- : int list = [1; 2; 3]
+
+# [1;2;3] @ [4;5;7;9;11];; 
+- : int list = [1; 2; 3; 4; 5; 7; 9; 11]
+
+# let rec sum lst = match lst with
+  |[]-> 0
+  |h::tail -> h + sum tail;;    
+val sum : int list -> int = <fun>
+# sum [1;2;3;4;5;6;7];;
+- : int = 28
+# 
+
+
+
 
