@@ -212,3 +212,28 @@ fib --> 8  f5
 
 
 https://github.com/CompScienceClub/ocaml-red-black-trees
+
+
+
+# for i=1 to 10 do
+  print_int i
+done;;    
+12345678910- : unit = ()
+# 
+
+# (fun x -> x + 1) 999;;
+- : int = 1000
+# 
+
+# let diff x y = abs (x - y);;
+val diff : int -> int -> int = <fun>
+# diff 5 981;;
+- : int = 976
+# 
+
+
+
+
+
+
+
