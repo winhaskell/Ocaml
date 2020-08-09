@@ -1,3 +1,5 @@
+The Basics -- Running OCaml code
+
 # 2.2+.2.2;;
 - : float = 4.4
 
@@ -54,6 +56,19 @@ Error: Illegal character (\027)
 #
 
 
+Basic types
+The basic types in OCaml are:
+
+OCaml type  Range
+
+int         31-bit signed int (roughly +/- 1 billion) on 32-bit
+            processors, or 63-bit signed int on 64-bit processors
+float       IEEE double-precision floating point, equivalent to C's double
+bool        A boolean, written either true or false
+char        An 8-bit character
+string      A string
+unit        Written as ()
+
 
 --------------------------------------------------------------------
 
@@ -64,24 +79,41 @@ Error: Illegal character (\027)
   else false;;
   ;;
 val isUru : int -> bool = <fun>
+
+# isUru 2020;;
+- : bool = true
+# isUru 2017;;
+- : bool = false
+# isUru 1996;;
+- : bool = true
+# isUru 2018;;
+- : bool = false
+# isUru 2021;;
+- : bool = false
+# 
+
+
+
 # let lastDay y m =
   let arrayOfLastDay = [|31; 28; 31; 30; 31; 30; 31; 31; 30; 31; 30; 31|] in
       if (isUru y) then arrayOfLastDay.(1) <- 29;
     arrayOfLastDay.(m - 1);;
 val lastDay : int -> int -> int = <fun>
-# last 2018 10
-  ;;
-Characters 0-4:
-  last 2018 10
-  ^^^^
-Error: Unbound value last
+
 
 # lastDay 2018 10;;
 - : int = 31
-
 # lastDay 2017 9;;
 - : int = 30
-#
+# lastDay 2018 10;;       
+- : int = 31
+# lastDay 2018 08;;
+- : int = 31
+# lastDay 2020 02;;
+- : int = 29
+# lastDay 2021 02;;
+- : int = 28
+# 
 
 
 
@@ -129,6 +161,10 @@ val sum : int list -> int = <fun>
 # sum [1;2;3;4;5;6;7];;
 - : int = 28
 # 
+
+
+
+
 
 
 
