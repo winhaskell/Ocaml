@@ -233,6 +233,118 @@ val diff : int -> int -> int = <fun>
 
 
 
+# let rev list =
+    let rec aux acc = function
+      | [] -> acc
+      | h::t -> aux (h::acc) t in
+    aux [] list;;        
+val rev : 'a list -> 'a list = <fun>
+
+#  rev ["a" ; "b" ; "c"];;
+- : string list = ["c"; "b"; "a"]
+
+# let is_palindrome list =
+    list = List.rev list ;;
+val is_palindrome : 'a list -> bool = <fun>
+
+# is_palindrome [ "x" ; "a" ; "m" ; "a" ; "x" ];;
+- : bool = true
+# is_palindrome [ "x" ; "a" ; "m" ; "a"];;           
+- : bool = false
+# 
+
+
+
+# let rec gcd a b =
+    if b = 0 then a else gcd b (a mod b);;  
+val gcd : int -> int -> int = <fun>
+
+
+# gcd 20 2020;;   
+- : int = 20
+# gcd 101 2020;;  
+- : int = 101
+
+
+
+
+--- Huffman code ---
+# module Pq = struct
+    type 'a t = { data: 'a list array;  mutable first: int }
+    let make() = { data = Array.make 101 [];  first = 101 }
+  
+    let add q p x =
+      q.data.(p) <- x :: q.data.(p);  q.first <- min p q.first
+  
+    let get_min q =
+      if q.first = 101 then None
+      else
+        match q.data.(q.first) with
+        | [] -> assert false
+        | x :: tl ->
+           let p = q.first in
+           q.data.(q.first) <- tl;
+           while q.first < 101 && q.data.(q.first) = [] do
+             q.first <- q.first + 1
+           done;
+           Some(p, x)
+  end
+  
+  type tree =
+    | Leaf of string
+    | Node of tree * tree
+  
+  let rec huffman_tree q =
+    match Pq.get_min q, Pq.get_min q with
+    | Some(p1, t1), Some(p2, t2) -> Pq.add q (p1 + p2) (Node(t1, t2));
+                                   huffman_tree q
+    | Some(_, t), None | None, Some(_, t) -> t
+    | None, None -> assert false
+  
+  (* Build the prefix-free binary code from the tree *)
+  let rec p                                                                  on
+    | Leaf s -> [(s, prefix)]
+    | Node(t0, t1) -> prefixes_of_tree (prefix ^ "0") t0
+                     @ prefixes_of_tree (prefix ^ "1") t1
+  
+  let huffman fs =
+    if List.fold_left (fun s (_,p) -> s + p) 0 fs <> 100 then
+      failwith "huffman: sum of weights must be 100";
+    let q = Pq.make() in
+    List.iter (fun (s,f) -> Pq.add q f (Leaf s)) fs;
+    prefixes_of_tree "" (huffman_tree q);;                    
+module Pq :
+  sig
+    type 'a t = { data : 'a list array; mutable first : int; }
+    val make : unit -> 'a t
+    val add : 'a t -> int -> 'a -> unit
+    val get_min : 'a t -> (int * 'a) option
+  end
+type tree = Leaf of string | Node of tree * tree
+val huffman_tree : tree Pq.t -> tree = <fun>
+val prefixes_of_tree : string -> tree -> (string * string) list = <fun>
+val huffman : (string * int) list -> (string * string) list = <fun>
+ 
+# let fs = [ ("a", 45); ("b", 13); ("c", 12); ("d", 16);
+             ("e", 9); ("f", 5) ];;  
+val fs : (string * int) list =
+  [("a", 45); ("b", 13); ("c", 12); ("d", 16); ("e", 9); ("f", 5)]
+  
+# huffman fs;;
+- : (string * string) list =
+[("a", "0"); ("c", "100"); ("b", "101"); ("f", "1100"); ("e", "1101");
+ ("d", "111")]
+ 
+# huffman ["a", 10;  "b", 15;  "c", 30;  "d", 16;  "e", 29];;
+- : (string * string) list =
+[("d", "00"); ("a", "010"); ("b", "011"); ("e", "10"); ("c", "11")]
+
+# huffman ["a", 10;  "b", 23; "c",66; "d",45; "e", 33];;     
+Exception: Failure "huffman: sum of weights must be 100".
+#   
+
+
+
 
 
 
